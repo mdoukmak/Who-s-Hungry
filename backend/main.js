@@ -80,7 +80,7 @@ app.post( '/api/sendverification', function( request, response ) {
 	}
 });
 
-app.post( 'api/verify', function( request, response) {
+app.post( '/api/verify', function( request, response) {
     if (typeof request.body.number == 'undefined' || typeof request.body.code == 'undefined'
         || typeof request.body.firstname == 'undefined' || request.body.lastname == 'undefined') {
         response.status(400).end();
@@ -94,7 +94,7 @@ app.post( 'api/verify', function( request, response) {
     } else {
         delete verificationCodes[request.body.number];
 
-        User user = new User(request.body.number, request.body.firstname, request.body.lastname);
+        var user = new User(request.body.number, request.body.firstname, request.body.lastname);
         users.push(user);
 
         response.status(200).end();
