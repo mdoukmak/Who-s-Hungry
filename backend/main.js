@@ -104,7 +104,7 @@ app.post( '/api/verify', function( request, response) {
     }
 });
 
-app.post( '/api/getcontacts', function(request, response)) {
+app.post( '/api/getcontacts', function(request, response) {
     if (typeof request.body != 'array') {
         response.status(400).end();
         console.log("Request body is not an array.");
@@ -120,7 +120,7 @@ app.post( '/api/getcontacts', function(request, response)) {
 
         response.status(200).end(numbersOnServer);
     }
-}
+});
 
 //Start server
 var port = 80;
