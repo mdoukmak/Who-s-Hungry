@@ -12,7 +12,8 @@ var Task = function(content, completed) {
 }
 
 function isPhoneNumber(number) {
-    return number.length() == 10;
+    //TODO: Fix this
+    return number.length == 10;
 }
 
 function sendVerificationMessage(number, code) {
