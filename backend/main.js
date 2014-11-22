@@ -12,8 +12,8 @@ var Task = function(content, completed) {
 }
 
 function isPhoneNumber(number) {
-    number = number.replace(/\D/g,'');
-    return number.match(/D{10}/g)
+    //TODO: Fix this
+    return true;
 }
 
 function sendVerificationMessage(number, code) {
@@ -73,7 +73,7 @@ app.post( '/api/sendverification', function( request, response ) {
         verificationCodes[request.body.number] = code;
         sendVerificationMessage(request.body.number, code);
 
-        request.status(200).end();
+        response.status(200).end();
 	}
 });
 
@@ -86,7 +86,7 @@ app.post( 'api/verify', function( request, response) {
         console.log("Invalid phone number: " + request.body.number);
     } else {
         delete verificationCodes[request.body.number];
-        request.status(200).end();
+        response.status(200).end();
     }
 });
 
