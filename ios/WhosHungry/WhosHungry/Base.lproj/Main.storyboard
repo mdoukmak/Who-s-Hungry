@@ -19,38 +19,109 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vgG-5L-pzp">
                                 <constraints>
-                                    <constraint firstAttribute="width" id="cLA-b4-VGo"/>
-                                    <constraint firstAttribute="height" id="ocK-Ml-V93"/>
+                                    <constraint firstAttribute="width" id="gPY-sr-xS7"/>
+                                    <constraint firstAttribute="height" id="rZu-f9-Jz5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who's Hungry?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uY-S7-Mjh">
-                                <rect key="frame" x="165" y="28" width="269" height="77"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who's Hungry?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uY-S7-Mjh">
+                                <rect key="frame" x="192" y="63" width="217" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="217" id="Wwh-If-edt"/>
+                                    <constraint firstAttribute="height" constant="39" id="hYG-jJ-izd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-kO-001">
-                                <rect key="frame" x="209" y="363" width="181" height="69"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-kO-001">
+                                <rect key="frame" x="224" y="374" width="152" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="I'm Hungry!">
                                     <color key="titleColor" red="0.20000001789999999" green="0.81568634510000004" blue="0.16862745579999999" alpha="1" colorSpace="deviceRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="userIsHungry:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Lz9-Jv-o45"/>
+                                    <segue destination="roi-kW-ZkJ" kind="show" id="I7V-mu-ago"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vgG-5L-pzp" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="PeO-nI-scA"/>
-                            <constraint firstItem="vgG-5L-pzp" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="hz9-GB-rY0"/>
+                            <constraint firstItem="vgG-5L-pzp" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="9ZU-we-qmB"/>
+                            <constraint firstItem="vgG-5L-pzp" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Bpx-rc-ImL"/>
+                            <constraint firstAttribute="centerX" secondItem="6uY-S7-Mjh" secondAttribute="centerX" constant="-0.5" id="IYT-TX-m7H"/>
+                            <constraint firstItem="6uY-S7-Mjh" firstAttribute="centerX" secondItem="IMi-kO-001" secondAttribute="centerX" id="Kt9-QJ-Qfh"/>
+                            <constraint firstItem="6uY-S7-Mjh" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="43" id="Wys-CO-qM5"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="IMi-kO-001" secondAttribute="bottom" constant="129" id="wjR-bb-uXF"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="772" y="-312"/>
+        </scene>
+        <!--Invite View Controller-->
+        <scene sceneID="Ick-XE-QxC">
+            <objects>
+                <viewController id="roi-kW-ZkJ" customClass="InviteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D9D-nm-M2T"/>
+                        <viewControllerLayoutGuide type="bottom" id="mRC-uj-yNJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="veY-w3-Lft">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who shall know?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRV-cN-uno">
+                                <rect key="frame" x="235" y="45" width="131" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WmU-JB-Nzg"/>
+                                    <constraint firstAttribute="width" constant="131" id="ltQ-n4-uwh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-R5-iC3">
+                                <rect key="frame" x="0.0" y="74" width="600" height="347"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trB-rN-Jnw">
+                                <rect key="frame" x="270" y="478" width="61" height="30"/>
+                                <state key="normal" title="Let's Eat">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaW-e7-PDw">
+                                <rect key="frame" x="538" y="28" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="0.1579297110218828" blue="0.16723656439053258" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9pv-A4-QxB" kind="show" id="2cQ-Eo-P5q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WRc-R5-iC3" firstAttribute="leading" secondItem="veY-w3-Lft" secondAttribute="leading" id="0PN-N2-iSG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LaW-e7-PDw" secondAttribute="trailing" constant="-2" id="MKa-sl-pa5"/>
+                            <constraint firstItem="WRc-R5-iC3" firstAttribute="centerX" secondItem="trB-rN-Jnw" secondAttribute="centerX" id="R49-fw-OOK"/>
+                            <constraint firstItem="LaW-e7-PDw" firstAttribute="top" secondItem="D9D-nm-M2T" secondAttribute="bottom" constant="8" symbolic="YES" id="TTs-wy-hcH"/>
+                            <constraint firstItem="WRc-R5-iC3" firstAttribute="top" secondItem="zRV-cN-uno" secondAttribute="bottom" constant="8" symbolic="YES" id="Tam-TV-MJW"/>
+                            <constraint firstItem="trB-rN-Jnw" firstAttribute="top" secondItem="WRc-R5-iC3" secondAttribute="bottom" constant="57" id="XLG-R4-oNg"/>
+                            <constraint firstItem="zRV-cN-uno" firstAttribute="centerX" secondItem="WRc-R5-iC3" secondAttribute="centerX" id="YYc-w2-bba"/>
+                            <constraint firstItem="zRV-cN-uno" firstAttribute="top" secondItem="D9D-nm-M2T" secondAttribute="bottom" constant="25" id="b5n-c0-jeu"/>
+                            <constraint firstItem="mRC-uj-yNJ" firstAttribute="top" secondItem="trB-rN-Jnw" secondAttribute="bottom" constant="43" id="fFI-FZ-Dph"/>
+                            <constraint firstAttribute="trailing" secondItem="WRc-R5-iC3" secondAttribute="trailing" id="ig6-V3-fLG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfx-ew-A0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="-312"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -310,4 +381,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2cQ-Eo-P5q"/>
+    </inferredMetricsTieBreakers>
 </document>
