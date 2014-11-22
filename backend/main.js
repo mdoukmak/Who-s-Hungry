@@ -1,5 +1,6 @@
 // Module dependencies.
 var application_root = __dirname,
+    _ = require( 'underscore' ),
     express = require( 'express' ),
     cors = require('cors'),
     twilio = require( 'twilio' );
@@ -102,6 +103,24 @@ app.post( '/api/verify', function( request, response) {
         console.log(user);
     }
 });
+
+app.post( '/api/getcontacts', function(request, response)) {
+    if (typeof request.body != 'array') {
+        response.status(400).end();
+        console.log("Request body is not an array.");
+        console.log(request.body);
+    } else {
+        var requestNumbers = request.body;
+    
+        var numbersOnServer = _.filter(users, function(user) {
+            return _.find(requestNumbers, function(number) {
+                return user.phone == number;
+            }).length > 0;
+        });
+
+        response.status(200).end(numbersOnServer);
+    }
+}
 
 //Start server
 var port = 80;
