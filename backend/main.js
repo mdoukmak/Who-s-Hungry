@@ -91,7 +91,7 @@ app.post( 'api/verify', function( request, response) {
 });
 
 //Start server
-var port = 4711;
+var port = 80;
 app.listen( port, function() {
     console.log( 'Express server listening on port %d in %s mode', port, app.settings.env );
 });
