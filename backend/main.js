@@ -1,0 +1,97 @@
+// Module dependencies.
+var application_root = __dirname,
+    express = require( 'express' ),
+    cors = require('cors'),
+    twilio = require( 'twilio' );
+
+var Twilio = new twilio.RestClient('AC49b389bc2451b92c77ea19dd5adac420', 'ca7a16c66eafc0611434d21c693ea2fb');
+
+var Task = function(content, completed) {
+	this.content = content;
+	this.completed = completed;
+}
+
+function isPhoneNumber(number) {
+    number = number.replace(/\D/g,'');
+    return number.match(/D{10}/g)
+}
+
+function sendVerificationMessage(number, code) {
+    Twilio.sms.messages.create({
+        to: '+1' + number,
+        from: '+16789168075',
+        body: "Your verification code for Who's Hungry is " + code
+    }, function(error, message) {
+        if (!error) {
+            console.log('Verification code sent to ' + number + ' on ');
+            console.log(message.dateCreated);
+        } else {
+            console.log('Could not send verification code to ' + number);
+        }
+    });
+}
+
+var verificationCodes = {};
+
+//Create server
+var app = express();
+
+// Configure server
+app.configure( function() {
+    //parses request body and populates request.body
+    app.use( express.bodyParser() );
+
+    //checks request.body for HTTP method overrides
+    app.use( express.methodOverride() );
+
+    app.use(cors());
+
+    //perform route lookup based on url and HTTP method
+    app.use( app.router );
+
+    //Show all errors in development
+    app.use( express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
+//Router
+//Get a list of all tasks
+app.get( '/api/tasks', function( request, response ) {
+    response.send(tasks);
+});
+
+//Insert a new task
+app.post( '/api/sendverification', function( request, response ) {
+	if (typeof request.body.number == 'undefined') {
+		response.status(400).end();
+		console.log("Request does not have phone number");
+	} else if (!isPhoneNumber(request.body.number)) {
+        response.status(400).end();
+        console.log("Invalid phone number: " + request.body.number);
+    } else {
+        var phoneNumber = request.body.number.replace
+		var code = Math.floor(Math.random()*10000);
+        verificationCodes[request.body.number] = code;
+        sendVerificationMessage(request.body.number, code);
+
+        request.status(200).end();
+	}
+});
+
+app.post( 'api/verify', function( request, response) {
+    if (typeof request.body.number == 'undefined' || typeof request.body.code == 'undefined') {
+        response.status(400).end();
+        console.log("Request does not have phone number and verification code");
+    } else if (!isPhoneNumber(request.body.number)) {
+        response.status(400).end();
+        console.log("Invalid phone number: " + request.body.number);
+    } else {
+        delete verificationCodes[request.body.number];
+        request.status(200).end();
+    }
+});
+
+//Start server
+var port = 4711;
+app.listen( port, function() {
+    console.log( 'Express server listening on port %d in %s mode', port, app.settings.env );
+});
