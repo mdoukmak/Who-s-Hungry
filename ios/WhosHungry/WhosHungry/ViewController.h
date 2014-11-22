@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  ViewController.h
 //  WhosHungry
 //
 //  Created by Muhammad Doukmak on 11/21/14.
@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController <UITextFieldDelegate>
-
+@interface ViewController : UIViewController <UITextFieldDelegate>
+{
+    CGFloat animatedDistance;
+}
 @end
 
