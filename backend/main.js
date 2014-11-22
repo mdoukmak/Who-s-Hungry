@@ -6,10 +6,13 @@ var application_root = __dirname,
 
 var Twilio = new twilio.RestClient('AC49b389bc2451b92c77ea19dd5adac420', 'ca7a16c66eafc0611434d21c693ea2fb');
 
-var Task = function(content, completed) {
-	this.content = content;
-	this.completed = completed;
+var User = function(phone, firstName, lastName) {
+	this.phone = phone;
+	this.firstName = firstName;
+    this.lastName = lastName;
 }
+
+var users = [];
 
 function isPhoneNumber(number) {
     //TODO: Fix this
@@ -78,15 +81,25 @@ app.post( '/api/sendverification', function( request, response ) {
 });
 
 app.post( 'api/verify', function( request, response) {
-    if (typeof request.body.number == 'undefined' || typeof request.body.code == 'undefined') {
+    if (typeof request.body.number == 'undefined' || typeof request.body.code == 'undefined'
+        || typeof request.body.firstname == 'undefined' || request.body.lastname == 'undefined') {
         response.status(400).end();
         console.log("Request does not have phone number and verification code");
     } else if (!isPhoneNumber(request.body.number)) {
         response.status(400).end();
         console.log("Invalid phone number: " + request.body.number);
+    } else if (request.body.code != verificationCodes[request.body.number]) {
+        response.status(400).end();
+        console.log("Invalid validation code!");
     } else {
         delete verificationCodes[request.body.number];
+
+        User user = new User(request.body.number, request.body.firstname, request.body.lastname);
+        users.push(user);
+
         response.status(200).end();
+        console.log("User added!");
+        console.log(user);
     }
 });
 
