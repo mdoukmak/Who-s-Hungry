@@ -23,8 +23,8 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    CFErrorRef * error = NULL;
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+    //CFErrorRef * error = NULL;
+   /* ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
     ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error)
  {
      if (granted)
@@ -43,12 +43,13 @@
                      NSLog(@"Current number:%@", phoneNumber);
                  }
              }
-         });
+         }
+        );
      }
  }
                                              
    NSLog(@"Total numbers[0]: %@", [_totalNumbers objectAtIndex:0]);
- );
+ */
     //NSLog(@"Total numbers[0]: %@", [_totalNumbers objectAtIndex:0]);
     InviteViewController *ivc = [segue destinationViewController];
     [ivc setContactNumbers:_totalNumbers];

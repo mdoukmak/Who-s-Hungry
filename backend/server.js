@@ -1,10 +1,11 @@
 // Module dependencies.
 var application_root = __dirname,
+    _ = require( 'underscore' ),
     express = require( 'express' ),
     cors = require('cors'),
     twilio = require( 'twilio' );
 
-var Twilio = new twilio.RestClient('AC49b389bc2451b92c77ea19dd5adac420', 'ca7a16c66eafc0611434d21c693ea2fb');
+var Twilio = new twilio.RestClient('AC99968521d55e87de3292dfe26a036e25', '419bb1b7bbefbbe57d37c55abe04b337');
 
 var User = function(phone, firstName, lastName) {
 	this.phone = phone;
@@ -22,7 +23,7 @@ function isPhoneNumber(number) {
 function sendVerificationMessage(number, code) {
     Twilio.sms.messages.create({
         to: '+1' + number,
-        from: '+16789168075',
+        from: '7706912561',
         body: "Your verification code for Who's Hungry is " + code
     }, function(error, message) {
         if (!error) {
@@ -103,8 +104,26 @@ app.post( '/api/verify', function( request, response) {
     }
 });
 
+app.post( '/api/getcontacts', function(request, response) {
+    if (typeof request.body != 'array') {
+        response.status(400).end();
+        console.log("Request body is not an array.");
+        console.log(request.body);
+    } else {
+        var requestNumbers = request.body;
+    
+        var numbersOnServer = _.filter(users, function(user) {
+            return _.find(requestNumbers, function(number) {
+                return user.phone == number;
+            }).length > 0;
+        });
+
+        response.status(200).end(numbersOnServer);
+    }
+});
+
 //Start server
 var port = 80;
-app.listen( port, function() {
+app.listen( process.env.PORT || port, function() {
     console.log( 'Express server listening on port %d in %s mode', port, app.settings.env );
 });

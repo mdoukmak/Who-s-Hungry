@@ -17,13 +17,13 @@
 
 @implementation ViewController
 - (IBAction)registerButton:(UIButton *)sender {
-    static NSString * const BaseURLString = @"http://hamadeh.me/api/sendverification";
+    static NSString * const BaseURLString = @"http://whohungry.herokuapp.com/api/sendverification";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *params = @{@"number": _numberField.text};
     [manager POST:BaseURLString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self performSegueWithIdentifier:@"numberReceived" sender:sender];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //NSLog(@"Error: %@", error);
+        NSLog(@"Error:: %@", error);
     }];
 }
 

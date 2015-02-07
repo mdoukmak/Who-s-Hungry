@@ -31,7 +31,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.view endEditing:YES];
 }
 - (IBAction)verifyButton:(UIButton *)sender {
-    static NSString * const BaseURLString = @"http://hamadeh.me/api/verify";
+    static NSString * const BaseURLString = @"http://whohungry.herokuapp.com/api/verify";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *params = @{@"number": _userNumber, @"code": _codeBox.text, @"firstname": _firstBox.text, @"lastname": _lastBox.text};
     [manager POST:BaseURLString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
